@@ -1,0 +1,29 @@
+PODS:
+  - Realm (3.17.3):
+    - Realm/Headers (= 3.17.3)
+  - Realm/Headers (3.17.3)
+  - RealmSwift (3.17.3):
+    - Realm (= 3.17.3)
+  - WordSuggestion (0.1.0):
+    - RealmSwift
+
+DEPENDENCIES:
+  - WordSuggestion (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Realm
+    - RealmSwift
+
+EXTERNAL SOURCES:
+  WordSuggestion:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Realm: 5a1d9d47bfc101dd597668b1a8af4288a2557f6d
+  RealmSwift: b7fdc2d18616621c31df5c7a398a45a2163f8eb0
+  WordSuggestion: 4c54f1432b3ff8500b3dd721d1eb9dfcfd0240ea
+
+PODFILE CHECKSUM: 3011f49bfa355b96a69168a8765f9152fe9f2105
+
+COCOAPODS: 1.7.5

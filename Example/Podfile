@@ -1,0 +1,12 @@
+platform :ios, '11.0'
+use_frameworks!
+
+target 'WordSuggestion_Example' do
+  pod 'WordSuggestion', :path => '../'
+
+  target 'WordSuggestion_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
