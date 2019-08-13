@@ -40,6 +40,8 @@ Swift implementation for N-Gram word prediction. Modified from the Objective-C v
 
 For more detail please check the Example app demo.
 
+## Install
+`pod 'WordSuggestion'`
 
 ## Demo
 ![Demo](word_suggestion.gif)
