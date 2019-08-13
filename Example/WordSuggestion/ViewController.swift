@@ -12,6 +12,8 @@ import WordSuggestion
 
 class ViewController: UIViewController {
 
+    let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+
     let realm: Realm = {
         var config = Realm.Configuration()
         let realmName = "WordPredictor_default"
@@ -41,6 +43,13 @@ class ViewController: UIViewController {
             stackView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor)
         ])
 
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicatorView)
+        NSLayoutConstraint.activate([
+            activityIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
+
         predictWordPreviewStackView.axis = .vertical
         predictWordPreviewStackView.alignment = .top
         predictWordPreviewStackView.distribution = .fill
@@ -48,8 +57,16 @@ class ViewController: UIViewController {
         textView.backgroundColor = .groupTableViewBackground
         textView.delegate = self
 
+        print("Purge realm database for debug")
+        realm.beginWrite()
+        realm.deleteAll()
+        try? realm.commitWrite()
+
+        activityIndicatorView.hidesWhenStopped = true
+        activityIndicatorView.startAnimating()
         if wordPredictor.needLoadNgramData {
             wordPredictor.load { error in
+                self.activityIndicatorView.stopAnimating()
                 print(error)
             }
         }

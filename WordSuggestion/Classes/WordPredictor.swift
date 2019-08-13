@@ -103,8 +103,9 @@ extension WordPredictor {
             return
         }
 
+        let config = realm.configuration
         let group = DispatchGroup()
-        let queue = DispatchQueue.global(qos: .userInitiated)
+        let queue = DispatchQueue.global(qos: .utility)
 
         // Note: fileReader.enumerateLines callback is sync method
 
@@ -127,12 +128,11 @@ extension WordPredictor {
                 id += 1
             }
 
-            DispatchQueue.main.async {
-                realm.beginWrite()
-                realm.add(grams, update: .all)
-                try? realm.commitWrite()
-                group.leave()
-            }
+            let realm = try! Realm(configuration: config)
+            realm.beginWrite()
+            realm.add(grams, update: .all)
+            try? realm.commitWrite()
+            group.leave()
         }
 
         // MARK: - ngram2
@@ -155,12 +155,11 @@ extension WordPredictor {
                 id += 1
             }
 
-            DispatchQueue.main.async {
-                realm.beginWrite()
-                realm.add(grams, update: .all)
-                try? realm.commitWrite()
-                group.leave()
-            }
+            let realm = try! Realm(configuration: config)
+            realm.beginWrite()
+            realm.add(grams, update: .all)
+            try? realm.commitWrite()
+            group.leave()
         }
 
         // MARK: - ngram3
@@ -183,12 +182,11 @@ extension WordPredictor {
                 id += 1
             }
 
-            DispatchQueue.main.async {
-                realm.beginWrite()
-                realm.add(grams, update: .all)
-                try? realm.commitWrite()
-                group.leave()
-            }
+            let realm = try! Realm(configuration: config)
+            realm.beginWrite()
+            realm.add(grams, update: .all)
+            try? realm.commitWrite()
+            group.leave()
         }
 
         // MARK: - ngram4
@@ -210,12 +208,11 @@ extension WordPredictor {
                 grams.append(gram)
                 id += 1
             }
-            DispatchQueue.main.async {
-                realm.beginWrite()
-                realm.add(grams, update: .all)
-                try? realm.commitWrite()
-                group.leave()
-            }
+            let realm = try! Realm(configuration: config)
+            realm.beginWrite()
+            realm.add(grams, update: .all)
+            try? realm.commitWrite()
+            group.leave()
         }
 
         // Group notify
