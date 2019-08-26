@@ -16,8 +16,11 @@ public class WordPredictor: NSObject {
     var operationQueue: OperationQueue?
 
     public var needLoadNgramData: Bool {
-        let ngram1 = realm.objects(NGram4.self)
-        return ngram1.count == 0
+        let ngram1 = realm.objects(NGram1.self)
+        let ngram2 = realm.objects(NGram2.self)
+        let ngram3 = realm.objects(NGram3.self)
+        let ngram4 = realm.objects(NGram4.self)
+        return ngram1.count == 0 || ngram2.count == 0 || ngram3.count == 0 || ngram4.count == 0
     }
 
     public init(ngramPath: NgramPath, realm: Realm) {

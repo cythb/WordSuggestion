@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'WordSuggestion'
-  s.version          = '0.2.0'
+  s.version          = '0.2.1'
   s.summary          = 'A Swift word suggestion model.'
 
   s.description      = <<-DESC
