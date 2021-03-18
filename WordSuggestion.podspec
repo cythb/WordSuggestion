@@ -23,5 +23,5 @@ Swift N-Gram word suggestion implementation.
     'Corpus' => ['WordSuggestion/Assets/*.csv']
   }
 
-  s.dependency 'RealmSwift'
+  s.dependency 'RealmSwift', "~> 10.7.0"
 end
